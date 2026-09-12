@@ -3,7 +3,7 @@
 The bme69x-python-library is a Python 3 wrapper for the BSEC3 library and BME690 environment sensor available from BoschSensortec. 
 The main use case for the Raspberry PI is with (1 or 2) single sensor BME690 modules, in IAQ (Air Quality and env data) mode  or SEL mode (Selectivity) sniffing using an AI Studio  model. 
 
-Bosch Sensortec released BSEC v3.3.0.1 in August 2026, with a fix for a missing function in the BSEC3 library for Linux/Raspberry Pi.  This a minor update to the Python3 wrapper for the BSEC 3.3.0.1 release. We continue to support multiple sensors on the same or multiple I2C buses with isolated configuration and state data. BSEC_OUTPUT_BREATH_VOC_EQUIVALENT was replaced in BSEC3.3.0.0, with BSEC_OUTPUT_TVOC_EQUIVALENT and this continues with BSEC3.3.0.1. TVOC is only reported in LP mode and not in ULP or Scan modes. (See the Bosch Sensortec Integration Guide included with BSEC3.3.0.1).
+Bosch Sensortec released BSEC v3.3.0.1 in August 2026, with a fix for a missing function in the BSEC3 library for Linux/Raspberry Pi.  This a minor update to the Python3 wrapper for the BSEC 3.3.0.1 release. This release continues to support multiple sensors on the same or multiple I2C buses with isolated configuration and state data. BSEC_OUTPUT_BREATH_VOC_EQUIVALENT was replaced in BSEC3.3.0.0, with BSEC_OUTPUT_TVOC_EQUIVALENT and this continues with BSEC3.3.0.1. TVOC is only reported in LP mode and not in ULP or Scan modes. (See the Bosch Sensortec Integration Guide included with BSEC3.3.0.1).
 
 Also in this release the Python 'build' package is used, rather than calling setup.py directly to build the extension. 
 
@@ -90,7 +90,7 @@ The examples folder has useful programs, include burning in a sensor, using ultr
 The tools folder provide a sample AI Model, data and code to use with a BME690 sensor to classify smells. Collecting data is best done with the BME690  8 sensor BOSCH Sensortec DevKit
 
 
-## A walk through a 64bit PI4 installation follows.
+## Installation walk through with Raspbian trixie 64bit on a  PI4.
 ```
 $ sudu apt install i2c-tools
 $ i2cdetect -y 1
@@ -120,6 +120,8 @@ $ cd BSEC3.3.0.1
 $ source bin/activate
 <user>:~/BSEC3.3.0.1 $
 ```
+Note: If you need to run the venv python3 from init scripts, cron, or systemd timers (anything that runs outside of the venv), provide the full path to python3 in the venv bin folder. It is that simple!
+
 Next clone this repo into the virtual environment.
 ```
 (690)<user>:~/BSEC3.3.0.1 $ ls -l
